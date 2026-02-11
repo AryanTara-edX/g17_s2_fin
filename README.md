@@ -1,2 +1,0 @@
-# CSE_400_Group17
-Section2_Group17_Finance
