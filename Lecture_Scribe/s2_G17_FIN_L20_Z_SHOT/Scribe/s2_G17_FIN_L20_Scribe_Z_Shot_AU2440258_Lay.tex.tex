@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{CSE400: Lecture 20 \\ Linear Transformations and Expectations of Multiple Random Variables}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Random Vector Representation}
+
+For random variables $X_1, X_2, \ldots, X_N$, we represent them as a vector:
+\[
+X =
+\begin{bmatrix}
+X_1 \\
+X_2 \\
+\vdots \\
+X_N
+\end{bmatrix}
+\]
+
+$X$ is called a \textbf{random vector}. It provides a compact representation of multiple random variables.
+
+\section{Mean Vector}
+
+\subsection{Definition}
+The mean vector of $X$ is:
+\[
+\mu_X = E[X]
+\]
+
+It represents the average value of the random vector. Each element corresponds to the mean of one random variable.
+
+\subsection{Structure}
+\[
+\mu_X =
+\begin{bmatrix}
+E[X_1] \\
+E[X_2] \\
+\vdots \\
+E[X_N]
+\end{bmatrix}
+\]
+
+\section{Correlation Matrix}
+
+\subsection{Definition}
+\[
+R_{XX} = E[XX^T]
+\]
+\[
+R_{XX}(i,j) = E[X_i X_j], \quad i,j \leq N
+\]
+
+\subsection{Matrix Form}
+\[
+R_{XX} =
+\begin{bmatrix}
+E[X_1X_1] & E[X_1X_2] & \cdots & E[X_1X_N] \\
+E[X_2X_1] & E[X_2X_2] & \cdots & E[X_2X_N] \\
+\vdots & \vdots & \ddots & \vdots \\
+E[X_NX_1] & E[X_NX_2] & \cdots & E[X_NX_N]
+\end{bmatrix}
+\]
+
+$R_{XX}$ is a symmetric matrix.
+
+\section{Covariance Matrix}
+
+\subsection{Definition}
+\[
+C_{XX} = E[(X - \mu_X)(X - \mu_X)^T]
+\]
+
+\subsection{Matrix Form}
+\[
+C_{XX} =
+\begin{bmatrix}
+\text{Var}(X_1) & \text{Cov}(X_1, X_2) & \cdots \\
+\text{Cov}(X_2, X_1) & \text{Var}(X_2) & \cdots \\
+\vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\subsection{Property}
+\[
+\text{Cov}(X_i, X_j) = \text{Cov}(X_j, X_i)
+\]
+
+\section{Linear Transformation of Random Vectors}
+
+\subsection{Linear Model}
+\[
+Y = AX + b
+\]
+
+Where:
+\begin{itemize}
+\item $A$ : Transformation matrix
+\item $b$ : Constant vector
+\item $X$ : Input random vector
+\end{itemize}
+
+\subsection{Expanded Form}
+\[
+Y_1 = a_{11}X_1 + a_{12}X_2 + \cdots + a_{1N}X_N + b_1
+\]
+\[
+Y_2 = a_{21}X_1 + a_{22}X_2 + \cdots + a_{2N}X_N + b_2
+\]
+\[
+\vdots
+\]
+\[
+Y_N = a_{N1}X_1 + a_{N2}X_2 + \cdots + a_{NN}X_N + b_N
+\]
+
+\section{Mean of Transformed Vector}
+
+\subsection{Mean Transformation}
+\[
+\mu_Y = E[Y]
+\]
+
+\subsection{Derivation}
+\[
+\mu_Y = E[AX + b]
+\]
+\[
+\mu_Y = E[AX] + E[b]
+\]
+
+\subsection{Result}
+\[
+\mu_Y = A\mu_X + b
+\]
+
+\section{Correlation Matrix Transformation}
+
+\subsection{Definition}
+\[
+R_{YY} = E[YY^T] = E[(AX + b)(AX + b)^T]
+\]
+
+\subsection{Expansion}
+\[
+R_{YY} = E[AXX^TA^T + AXb^T + bX^TA^T + bb^T]
+\]
+
+\subsection{Applying Expectation}
+\[
+R_{YY} = A E[XX^T] A^T + A E[X] b^T + b E[X^T] A^T + bb^T
+\]
+
+\subsection{Final Result}
+\[
+R_{YY} = A R_{XX} A^T + A \mu_X b^T + b \mu_X^T A^T + bb^T
+\]
+
+\section{Covariance Matrix Transformation}
+
+\subsection{Key Observation}
+\[
+Y - \mu_Y = (AX + b) - (A\mu_X + b) = A(X - \mu_X)
+\]
+
+The deviation from the mean is independent of the shift $b$.
+
+\section{Case Study: Smart City Traffic + Weather System}
+
+\subsection{Scenario}
+Design an intelligent system to predict traffic congestion using transportation and climate variables.
+
+\subsection{Steps}
+\begin{itemize}
+\item Define $N$ random variables (vector form)
+\item Compute mean vector
+\item Construct covariance matrix
+\end{itemize}
+
+\subsection{Interpretation}
+\begin{itemize}
+\item More rain $\Rightarrow$ more congestion
+\item More rain $\Rightarrow$ lower speed
+\item More traffic $\Rightarrow$ higher pollution
+\item Higher temperature $\Rightarrow$ pollution disperses
+\end{itemize}
+
+Covariance matrix acts as a dependency map of the system.
+
+\end{document}
