@@ -1,0 +1,75 @@
+﻿Generate a lecture scribe intended to serve as complete, exam-oriented reference material for CSE 400: Fundamentals of Probability in Computing (Lecture 20: Linear Transformations and Expectations of Multiple Random Variables).
+
+
+Use only the provided Lecture 20 slides/PDF. Do not use any external knowledge.
+
+
+STRICT RECONSTRUCTION REQUIREMENTS
+
+
+The scribe must reconstruct the lecture slide-by-slide, preserving all content exactly as presented, without omission.
+
+
+You MUST include:
+
+
+Every definition, formula, matrix expression, and notation
+All intermediate steps in derivations (do not skip expansions or simplifications)
+All example problems and their full solutions exactly as shown in the slides
+All interpretations, observations, and inference statements
+All bullet points and textual explanations from slides
+CASE STUDY REQUIREMENT (VERY IMPORTANT)
+
+
+The Smart City Traffic + Weather System case study must be fully expanded, including:
+
+
+Complete definition of the random vector (all variables explicitly listed if shown)
+Mean vector explanation
+Full covariance interpretation (each relationship explicitly written)
+Joint Gaussian assumption and its meaning
+Linear transformation (Congestion Index) with full explanation
+All inference statements (Inference #1, Inference #2, etc.)
+Any cause-effect relationships (e.g., rainfall → speed ↓, traffic ↑, pollution ↑)
+
+
+Do NOT summarize or compress the case study.
+It must be written step-by-step exactly as presented in the lecture.
+
+
+MATHEMATICAL RIGOR
+
+
+For transformations and matrices:
+
+
+Show full expansion steps (e.g., E[(AX+b)(AX+b).T])
+
+
+Do not jump directly to final results
+Preserve matrix structure and notation exactly
+ORGANIZATION
+Follow the exact order of slides
+Use section headings corresponding to lecture flow
+Maintain formal academic tone
+Ensure continuity between sections
+STRICT PROHIBITIONS
+
+
+Do NOT:
+
+
+Skip examples or case study steps
+Summarize or shorten explanations
+Add your own intuition or explanations
+Introduce new examples
+Modify notation
+OUTPUT REQUIREMENT
+
+
+The final output must:
+
+
+Be detailed enough to replace the lecture slides for revision
+Contain all worked content from the lecture
+Match a full-length academic scribe (not a summary)
