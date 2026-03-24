@@ -1,0 +1,503 @@
+﻿\documentclass[12pt]{article}
+
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{etoolbox}
+
+
+\begin{document}
+
+
+\onehalfspacing
+
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\setlength{\itemsep}{0.2em}
+
+
+\AtBeginEnvironment{equation}{\vspace{0.2cm}}
+\AtEndEnvironment{equation}{\vspace{0.2cm}}
+\AtBeginEnvironment{align}{\vspace{0.2cm}}
+\AtEndEnvironment{align}{\vspace{0.2cm}}
+
+
+%------------------------------------------------
+
+
+\begin{center}
+\textbf{CSE 400: Fundamentals of Probability in Computing}\\
+Lecture 20 Scribe Submission
+
+
+\vspace{0.4cm}
+
+
+Name: Aryan Tarachandani\\
+Enrollment No: AU2420177\\
+Email: aryan.t1@ahduni.edu.in\\
+Date of Submission: March 26, 2026
+\end{center}
+
+
+\vspace{0.4cm}
+\noindent\rule{\textwidth}{0.5pt}
+\vspace{0.6cm}
+
+
+%------------------------------------------------
+
+
+\section*{Lecture 20: Linear Transformations and Expectations of Multiple RVs}
+
+
+\vspace{0.3cm}
+
+
+%------------------------------------------------
+
+
+\section*{1. Random Vector Representation}
+
+
+\vspace{0.2cm}
+
+
+For random variables $X_1, X_2, \dots, X_N$, we represent them as:
+
+
+\[
+X =
+\begin{bmatrix}
+X_1 \\
+X_2 \\
+\vdots \\
+X_N
+\end{bmatrix}
+\]
+
+
+\begin{itemize}
+\item $X$ is called a random vector
+\item It provides a compact representation of multiple random variables
+\end{itemize}
+
+
+%------------------------------------------------
+
+
+\section*{2. Mean Vector}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Definition:}
+
+
+\[
+\mu_X = E[X]
+\]
+
+
+\begin{itemize}
+\item Represents the average value of the random vector
+\item Each element corresponds to the mean of one random variable
+\end{itemize}
+
+
+\textbf{Structure:}
+
+
+\[
+\mu_X =
+\begin{bmatrix}
+E[X_1] \\
+E[X_2] \\
+\vdots \\
+E[X_N]
+\end{bmatrix}
+\]
+
+
+%------------------------------------------------
+
+
+\section*{3. Correlation Matrix}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Definition:}
+
+
+\[
+R_{XX} = E[XX^T]
+\]
+
+
+\[
+R_{XX}(i,j) = E[X_i X_j]
+\]
+
+
+\textbf{Matrix Form:}
+
+
+\[
+R_{XX} =
+\begin{bmatrix}
+E[X_1X_1] & E[X_1X_2] & \cdots & E[X_1X_N] \\
+E[X_2X_1] & E[X_2X_2] & \cdots & E[X_2X_N] \\
+\vdots & \vdots & \ddots & \vdots \\
+E[X_NX_1] & E[X_NX_2] & \cdots & E[X_NX_N]
+\end{bmatrix}
+\]
+
+
+\textbf{Property:}
+
+
+\begin{itemize}
+\item $R_{XX}$ is a symmetric matrix
+\end{itemize}
+
+
+%------------------------------------------------
+
+
+\section*{4. Covariance Matrix}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Definition:}
+
+
+\[
+C_{XX} = E[(X - \mu_X)(X - \mu_X)^T]
+\]
+
+
+\textbf{Matrix Form:}
+
+
+\[
+C_{XX} =
+\begin{bmatrix}
+Var(X_1) & Cov(X_1,X_2) & \cdots \\
+Cov(X_2,X_1) & Var(X_2) & \cdots \\
+\vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+
+\textbf{Property:}
+
+
+\[
+Cov(X_i, X_j) = Cov(X_j, X_i)
+\]
+
+
+%------------------------------------------------
+
+
+\section*{5. Linear Transformation of Random Vectors}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Model:}
+
+
+\[
+Y = AX + b
+\]
+
+
+\begin{itemize}
+\item $A$: Transformation matrix (scales and rotates the data)
+\item $b$: Constant vector (shifts/translates the center)
+\item $X$: Input random vector
+\end{itemize}
+
+
+\textbf{Expanded Form:}
+
+
+\[
+Y_1 = a_{11}X_1 + a_{12}X_2 + \cdots + a_{1N}X_N + b_1
+\]
+
+
+\[
+Y_2 = a_{21}X_1 + a_{22}X_2 + \cdots + a_{2N}X_N + b_2
+\]
+
+
+\[
+\vdots
+\]
+
+
+\[
+Y_N = a_{N1}X_1 + a_{N2}X_2 + \cdots + a_{NN}X_N + b_N
+\]
+
+
+%------------------------------------------------
+
+
+\section*{6. Mean of Transformed Vector}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Given:}
+
+
+\[
+Y = AX + b
+\]
+
+
+\textbf{Find:}
+
+
+\[
+\mu_Y = E[Y]
+\]
+
+
+\textbf{Derivation:}
+
+
+\[
+\mu_Y = E[AX + b]
+\]
+
+
+\[
+= E[AX] + E[b]
+\]
+
+
+\[
+= A E[X] + b
+\]
+
+
+\textbf{Final Result:}
+
+
+\[
+\mu_Y = A\mu_X + b
+\]
+
+
+%------------------------------------------------
+
+
+\section*{7. Correlation Matrix Transformation}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Definition:}
+
+
+\[
+R_{YY} = E[YY^T] = E[(AX + b)(AX + b)^T]
+\]
+
+
+\textbf{Expansion:}
+
+
+\[
+R_{YY} = E[AXX^TA^T + AXb^T + bX^TA^T + bb^T]
+\]
+
+
+\textbf{Applying Expectation:}
+
+
+\[
+R_{YY} = A E[XX^T] A^T + A E[X] b^T + b E[X^T] A^T + bb^T
+\]
+
+
+\textbf{Final Result:}
+
+
+\[
+R_{YY} = A R_{XX} A^T + A \mu_X b^T + b \mu_X^T A^T + bb^T
+\]
+
+
+%------------------------------------------------
+
+
+\section*{8. Covariance Transformation}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Key Observation:}
+
+
+\[
+Y - \mu_Y = (AX + b) - (A\mu_X + b)
+\]
+
+
+\[
+= A(X - \mu_X)
+\]
+
+
+\begin{itemize}
+\item The deviation from the mean is independent of the shift $b$
+\end{itemize}
+
+
+%------------------------------------------------
+
+
+\section*{9. Case Study: Smart City Traffic + Weather System}
+
+
+\vspace{0.2cm}
+
+
+\textbf{Problem:}
+
+
+Design an intelligent system in Ahmedabad that predicts traffic congestion using transportation and climate variables.
+
+
+%-----------------
+
+
+\textbf{Step 1: Random Vector}
+
+
+\[
+X =
+\begin{bmatrix}
+X_1 \\
+X_2 \\
+X_3 \\
+X_4 \\
+X_5
+\end{bmatrix}
+\]
+
+
+\begin{itemize}
+\item N-dimensional random vector with $N = 5$
+\end{itemize}
+
+
+%-----------------
+
+
+\textbf{Step 2: Mean Vector}
+
+
+\[
+\mu_X =
+\begin{bmatrix}
+E[X_1] \\
+E[X_2] \\
+E[X_3] \\
+E[X_4] \\
+E[X_5]
+\end{bmatrix}
+\]
+
+
+%-----------------
+
+
+\textbf{Step 3: Covariance Interpretation}
+
+
+\begin{itemize}
+\item More rain $\Rightarrow$ more congestion
+\item More rain $\Rightarrow$ lower speed
+\item More traffic $\Rightarrow$ higher pollution
+\item Higher temperature $\Rightarrow$ pollution disperses
+\item Covariance matrix = dependency map of the city
+\end{itemize}
+
+
+%-----------------
+
+
+\textbf{Step 4: Joint Gaussian Assumption}
+
+
+\begin{itemize}
+\item The random vector follows a joint Gaussian distribution
+\item The system behaves in a joint probabilistic manner
+\end{itemize}
+
+
+%-----------------
+
+
+\textbf{Step 5: Linear Transformation}
+
+
+\[
+Y = AX + b
+\]
+
+
+\begin{itemize}
+\item Produces a congestion index
+\end{itemize}
+
+
+%-----------------
+
+
+\textbf{Inference Statements}
+
+
+\begin{itemize}
+\item Rainfall increases congestion and decreases speed
+\item Traffic increase leads to higher pollution
+\item Temperature affects pollution dispersion
+\end{itemize}
+
+
+%-----------------
+
+
+\textbf{Cause--Effect Relationships}
+
+
+\begin{itemize}
+\item Rain $\uparrow \Rightarrow$ Speed $\downarrow$
+\item Rain $\uparrow \Rightarrow$ Traffic $\uparrow$
+\item Traffic $\uparrow \Rightarrow$ Pollution $\uparrow$
+\item Temperature $\uparrow \Rightarrow$ Pollution $\downarrow$
+\end{itemize}
+
+
+%------------------------------------------------
+
+
+\end{document}
