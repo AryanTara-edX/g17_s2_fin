@@ -34,7 +34,7 @@ data["IV"] = data["Close for VIX"] / 100
 
 # ----------------------------
 # Step 4: Variance Risk Premium
-# ----------------------------
+# ---------------------------
 
 data["VRP"] = data["IV"]**2 - data["RV"]**2
 
